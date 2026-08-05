@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Muh. Ayyid Firjatullah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ebebeb;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Core Liquid Glass System --- */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: url(#liquidGlass) blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 30px 30px rgba(0,0,0,0.05), 
+                        inset 0 0 20px rgba(255,255,255,0.5), 
+                        inset 3px 3px 2px -2px rgba(255,255,255,0.8), 
+                        inset -3px -3px 2px -2px rgba(255,255,255,0.8);
+        }
+
+        .liquid-glass-darker {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-up { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-left { animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-right { animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        
+        .opacity-0-init { opacity: 0; }
+
+        /* Hover Effects */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #ebebeb; }
+        ::-webkit-scrollbar-thumb { background: #c2c2c2; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+
+        .bg-hero {
+            background-image: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(235, 235, 235, 0.85) 0%, rgba(255, 255, 255, 0.6) 100%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Liquid Glass Filter SVG[cite: 5] -->
+    <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+        <defs>
+            <filter id="liquidGlass">
+                <feTurbulence type="turbulence" baseFrequency="0.005" numOctaves="2" result="turbulence" />
+                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 top-0 pt-4 px-4" id="navbar">
+        <div class="max-w-7xl mx-auto liquid-glass rounded-2xl px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://immim.sch.id/img/logo-immim-small.webp?v1" alt="Logo Institusi" class="h-10 w-auto">
+                <span class="font-playfair font-bold text-xl text-[#4a3b32]">Portofolio Ayyid</span>
+            </div>
+            
+            <div class="hidden md:flex gap-8 items-center font-medium text-[#5a4a40]">
+                <a href="#home" class="hover:text-black transition">Home</a>
+                <a href="#profile" class="hover:text-black transition">Profile</a>
+                <a href="#berkas" class="hover:text-black transition">Berkas</a>
+                <a href="#prestasi" class="hover:text-black transition">Prestasi</a>
+                <a href="#organisasi" class="hover:text-black transition">Organisasi</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-4 bg-hero">
+        <div class="absolute inset-0 hero-overlay"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="animate-left opacity-0-init text-[#4a3b32]">
+                <p class="text-sm md:text-base tracking-widest uppercase mb-2 font-semibold">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+                <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-4">SAYA AYYID</h1>
+                
+                <div class="h-1 w-24 bg-[#4a3b32] mb-6 rounded-full opacity-50"></div>
+                
+                <h2 class="text-xl md:text-2xl font-medium mb-4">Santri | IT Enthusiast | Problem Solver</h2>
+                <p class="text-base md:text-lg opacity-80 mb-8 leading-relaxed max-w-lg">
+                    Berusaha menjadi pribadi yang baik dan bermanfaat, terus belajar, dan berkontribusi untuk umat, bangsa dan negara.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#profile" class="liquid-glass-darker px-8 py-3 rounded-full font-semibold hover:bg-white/60 transition shadow-sm">My Profile</a>
+                    <a href="#berkas" class="liquid-glass px-8 py-3 rounded-full font-semibold hover:bg-white/40 transition">Berkas & Sertifikat</a>
+                </div>
+            </div>
+
+            <!-- Profile Image -->
+            <div class="animate-right opacity-0-init delay-200 flex justify-center md:justify-end relative">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <!-- Decor element -->
+                    <div class="absolute inset-0 bg-white/30 rounded-3xl rotate-6 scale-105 liquid-glass"></div>
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgj3flbBRCwSOnjXi72_7XKE-9gNuyOJJWZZSufsU9Mk7Vhjfzn0kRLmP60cuN6hDOMrYX6soW-jHBRfX8WOzHbMl7QqymKcGXmuW6wdEZoPNpFYP5_T-YarSKAmXBZ-Nu2dzJblwpWbcg_Dvl7H5uePcxviYmvsAIuaGgA-RvmG2VLwSzTT_D__BKYhj3L" 
+                         alt="Foto Ayyid" 
+                         class="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl">
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Social Links Floating Bar -->
+        <div class="absolute bottom-6 left-0 w-full px-4 animate-up opacity-0-init delay-300">
+            <div class="max-w-4xl mx-auto liquid-glass rounded-2xl p-4 flex flex-wrap justify-center gap-6 md:gap-12">
+                <a href="https://discord.com/users/714727890440159273" target="_blank" class="flex items-center gap-2 font-medium text-[#4a3b32] hover:text-black transition">
+                    <i data-lucide="message-square" class="w-5 h-5 text-indigo-500"></i> Discord
+                </a>
+                <a href="http://wa.me/6281524937364" target="_blank" class="flex items-center gap-2 font-medium text-[#4a3b32] hover:text-black transition">
+                    <i data-lucide="phone" class="w-5 h-5 text-green-500"></i> WhatsApp
+                </a>
+                <a href="mailto:firjagamerz@gmail.com" class="flex items-center gap-2 font-medium text-[#4a3b32] hover:text-black transition">
+                    <i data-lucide="mail" class="w-5 h-5 text-red-500"></i> Email
+                </a>
+                <a href="https://github.com/tokkegamer622" target="_blank" class="flex items-center gap-2 font-medium text-[#4a3b32] hover:text-black transition">
+                    <i data-lucide="github" class="w-5 h-5 text-gray-800"></i> Github
+                </a>
+                <a href="https://www.instagram.com/ayyid_f/" target="_blank" class="flex items-center gap-2 font-medium text-[#4a3b32] hover:text-black transition">
+                    <i data-lucide="instagram" class="w-5 h-5 text-pink-600"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="py-24 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16 scroll-anim opacity-0-init">
+            <h2 class="text-3xl md:text-4xl font-bold font-playfair text-[#4a3b32] mb-4">Tentang Saya</h2>
+            <div class="w-16 h-1 bg-[#4a3b32] mx-auto rounded-full opacity-50"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-5 scroll-anim opacity-0-init delay-100">
+                <div class="liquid-glass rounded-3xl p-8 card-hover">
+                    <div class="w-24 h-24 bg-white/50 rounded-full flex items-center justify-center mb-6 text-4xl">👨‍💻</div>
+                    <h3 class="text-2xl font-bold text-[#4a3b32] font-playfair mb-2">Muh. Ayyid Firjatullah</h3>
+                    <p class="text-[#6B6B6B] font-medium mb-6">18 Tahun | Lahir: 3 Oktober 2007</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 bg-white/40 p-3 rounded-xl">
+                            <i data-lucide="monitor" class="text-[#4a3b32]"></i>
+                            <span class="text-sm font-medium">Software: VS Code, Adobe Audition, SketchUp[cite: 3]</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/40 p-3 rounded-xl">
+                            <i data-lucide="tool" class="text-[#4a3b32]"></i>
+                            <span class="text-sm font-medium">Hardware: Maintenance & Troubleshooting[cite: 3]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-7 scroll-anim opacity-0-init delay-200">
+                <div class="liquid-glass rounded-3xl p-8 md:p-10 card-hover h-full flex flex-col justify-center">
+                    <p class="text-[#4a3b32] leading-relaxed mb-6 text-lg font-playfair italic">
+                        "Punya ketertarikan besar di dunia IT dan multimedia membuat saya terbiasa menangani berbagai kebutuhan teknis, seperti troubleshooting software, perawatan komputer, hingga pengaturan audio visual."[cite: 3]
+                    </p>
+                    <p class="text-[#6B6B6B] leading-relaxed mb-4">
+                        Tumbuh dan belajar di Pesantren IMMIM Putra Makassar sejak bangku SMP mengajarkan saya satu hal yang tidak ada di kurikulum manapun: jika ada sesuatu yang rusak, kitalah yang harus memperbaikinya[cite: 1, 4]. Di samping aktif memimpin kegiatan multimedia, saya juga tipikal orang yang teliti berkat pengalaman langsung membantu penyusunan laporan keuangan publik di Balai Kota Makassar[cite: 3].
+                    </p>
+                    <p class="text-[#6B6B6B] leading-relaxed">
+                        Keterampilan teknis yang saya miliki saat ini tumbuh dari kebutuhan untuk menyelesaikan masalah nyata di sekitar saya. Saya percaya bahwa teknologi terbaik adalah teknologi yang benar-benar bisa bekerja dan memberikan solusi praktis, terutama di lingkungan pendidikan[cite: 1].
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berkas Section -->
+    <section id="berkas" class="py-24 px-4 bg-white/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 scroll-anim opacity-0-init">
+                <h2 class="text-3xl md:text-4xl font-bold font-playfair text-[#4a3b32] mb-4">Berkas & Dokumen</h2>
+                <div class="w-16 h-1 bg-[#4a3b32] mx-auto rounded-full opacity-50"></div>
+                <p class="mt-4 text-[#6B6B6B]">Kumpulan portofolio dokumen akademik dan profesional.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Berkas 1 -->
+                <div class="liquid-glass rounded-3xl p-8 card-hover flex flex-col items-center text-center scroll-anim opacity-0-init delay-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="file-text" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#4a3b32] mb-3">CV Lengkap</h3>
+                    <p class="text-sm text-[#6B6B6B] mb-6 flex-grow">Curriculum Vitae detail yang mencakup riwayat pendidikan, keahlian software & IT, hingga pencapaian kompetisi[cite: 3].</p>
+                    <button class="liquid-glass-darker w-full py-3 rounded-xl font-semibold text-[#4a3b32] hover:bg-white/80 transition">Lihat Berkas</button>
+                </div>
+
+                <!-- Berkas 2 -->
+                <div class="liquid-glass rounded-3xl p-8 card-hover flex flex-col items-center text-center scroll-anim opacity-0-init delay-200">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="briefcase" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#4a3b32] mb-3">Proposal Bisnis SantriTech</h3>
+                    <p class="text-sm text-[#6B6B6B] mb-6 flex-grow">Rancangan layanan servis & perawatan laptop komprehensif, mencakup optimalisasi OS dan hardware khusus untuk pelajar[cite: 2].</p>
+                    <button class="liquid-glass-darker w-full py-3 rounded-xl font-semibold text-[#4a3b32] hover:bg-white/80 transition">Lihat Berkas</button>
+                </div>
+
+                <!-- Berkas 3 -->
+                <div class="liquid-glass rounded-3xl p-8 card-hover flex flex-col items-center text-center scroll-anim opacity-0-init delay-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#4a3b32] mb-3">Motivation Letter</h3>
+                    <p class="text-sm text-[#6B6B6B] mb-6 flex-grow">Esai aplikasi beasiswa NL Scholarship (Computer Engineering) mengenai visi pemerataan literasi teknologi di Indonesia Timur[cite: 4].</p>
+                    <button class="liquid-glass-darker w-full py-3 rounded-xl font-semibold text-[#4a3b32] hover:bg-white/80 transition">Lihat Berkas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prestasi Section -->
+    <section id="prestasi" class="py-24 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16 scroll-anim opacity-0-init">
+            <h2 class="text-3xl md:text-4xl font-bold font-playfair text-[#4a3b32] mb-4">Prestasi & Penghargaan</h2>
+            <div class="w-16 h-1 bg-[#4a3b32] mx-auto rounded-full opacity-50"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="liquid-glass rounded-3xl p-6 card-hover scroll-anim opacity-0-init delay-100">
+                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4"><i data-lucide="award" class="text-yellow-600"></i></div>
+                <h4 class="font-bold text-[#4a3b32] mb-2">Santri Teladan</h4>
+                <p class="text-sm text-[#6B6B6B]">Dua periode berturut-turut: 2022-2023 dan 2023-2024 di Pesantren IMMIM Putra[cite: 3].</p>
+            </div>
+            <div class="liquid-glass rounded-3xl p-6 card-hover scroll-anim opacity-0-init delay-200">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4"><i data-lucide="trophy" class="text-blue-600"></i></div>
+                <h4 class="font-bold text-[#4a3b32] mb-2">2nd Position</h4>
+                <p class="text-sm text-[#6B6B6B]">DICE Competition 2025. Menguji kemampuan berpikir cepat secara formal[cite: 3, 4].</p>
+            </div>
+            <div class="liquid-glass rounded-3xl p-6 card-hover scroll-anim opacity-0-init delay-300">
+                <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4"><i data-lucide="medal" class="text-indigo-600"></i></div>
+                <h4 class="font-bold text-[#4a3b32] mb-2">Finalist</h4>
+                <p class="text-sm text-[#6B6B6B]">SMAELI English Camp Competition 2024[cite: 3].</p>
+            </div>
+            <div class="liquid-glass rounded-3xl p-6 card-hover scroll-anim opacity-0-init delay-300">
+                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4"><i data-lucide="star" class="text-orange-600"></i></div>
+                <h4 class="font-bold text-[#4a3b32] mb-2">Nominee Grade</h4>
+                <p class="text-sm text-[#6B6B6B]">Global House English Competition 2024[cite: 3].</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organisasi Section -->
+    <section id="organisasi" class="py-24 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16 scroll-anim opacity-0-init">
+            <h2 class="text-3xl md:text-4xl font-bold font-playfair text-[#4a3b32] mb-4">Pengalaman & Organisasi</h2>
+            <div class="w-16 h-1 bg-[#4a3b32] mx-auto rounded-full opacity-50"></div>
+        </div>
+
+        <div class="space-y-6">
+            <!-- Item 1 -->
+            <div class="liquid-glass rounded-3xl p-6 md:p-8 card-hover flex flex-col md:flex-row gap-6 items-center scroll-anim opacity-0-init">
+                <div class="w-16 h-16 md:w-20 md:h-20 bg-white/50 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <span class="text-3xl">🏛️</span>
+                </div>
+                <div>
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-2">
+                        <h3 class="text-xl font-bold text-[#4a3b32]">Balai Kota Makassar</h3>
+                        <span class="text-sm px-3 py-1 bg-white/60 rounded-full text-[#6B6B6B] font-medium w-max">2024 - 2026</span>
+                    </div>
+                    <p class="text-[#6B6B6B] leading-relaxed">
+                        Membantu menyusun Laporan Keuangan BLUD Kota Makassar, termasuk penyusunan Laporan Auditor Independen, Neraca, Arus Kas, dan Catatan Atas Laporan Keuangan (CALK)[cite: 3].
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="liquid-glass rounded-3xl p-6 md:p-8 card-hover flex flex-col md:flex-row gap-6 items-center scroll-anim opacity-0-init delay-100">
+                <div class="w-16 h-16 md:w-20 md:h-20 bg-white/50 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <span class="text-3xl">🕌</span>
+                </div>
+                <div>
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-2">
+                        <h3 class="text-xl font-bold text-[#4a3b32]">MAS IMMIM Putra (Organisasi Kampus)</h3>
+                        <span class="text-sm px-3 py-1 bg-white/60 rounded-full text-[#6B6B6B] font-medium w-max">2025 - 2026</span>
+                    </div>
+                    <p class="text-[#6B6B6B] leading-relaxed">
+                        Mengemban amanah sebagai Kepala Bidang (Kabid) Multimedia. Bertanggung jawab atas pembenahan ruang multimedia, pemeliharaan alat (Mixer) Masjid, serta maintenance komputer bagian keuangan dan kantin pondok[cite: 3].
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="liquid-glass rounded-3xl p-6 md:p-8 card-hover flex flex-col md:flex-row gap-6 items-center scroll-anim opacity-0-init delay-200">
+                <div class="w-16 h-16 md:w-20 md:h-20 bg-white/50 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <span class="text-3xl">💻</span>
+                </div>
+                <div>
+                    <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-2">
+                        <h3 class="text-xl font-bold text-[#4a3b32]">SantriTech Computer Service</h3>
+                        <span class="text-sm px-3 py-1 bg-white/60 rounded-full text-[#6B6B6B] font-medium w-max">2026</span>
+                    </div>
+                    <p class="text-[#6B6B6B] leading-relaxed">
+                        Bertindak sebagai Teknisi utama untuk penanganan teknis perbaikan hardware, pembersihan perangkat, pengelolaan software, dan eksekusi optimasi OS laptop konsumen di lingkungan pesantren[cite: 2].
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-12 liquid-glass border-b-0 border-x-0 border-t border-white/50 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="font-playfair text-2xl font-bold text-[#4a3b32] mb-4">Muh. Ayyid Firjatullah</h2>
+            <p class="text-[#6B6B6B] text-sm mb-6 max-w-md mx-auto">"If something breaks, you are the one who fixes it. Not because it is written in any rule book, but because there is simply no one else."[cite: 1]</p>
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="https://github.com/tokkegamer622" class="w-10 h-10 bg-white/50 rounded-full flex items-center justify-center text-[#4a3b32] hover:bg-white/80 transition"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="https://www.instagram.com/ayyid_f/" class="w-10 h-10 bg-white/50 rounded-full flex items-center justify-center text-[#4a3b32] hover:bg-white/80 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="mailto:firjagamerz@gmail.com" class="w-10 h-10 bg-white/50 rounded-full flex items-center justify-center text-[#4a3b32] hover:bg-white/80 transition"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            </div>
+            <p class="text-sm text-[#4a3b32] opacity-70">© 2026 Ayyid Portofolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Scroll Animation Logic
+        const scrollElements = document.querySelectorAll('.scroll-anim');
+        
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.remove('opacity-0-init');
+            element.classList.add('animate-up');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            })
+        }
+
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+            
+            // Navbar blur effect on scroll
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-sm');
+                nav.querySelector('div').classList.remove('py-3');
+                nav.querySelector('div').classList.add('py-2');
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.querySelector('div').classList.add('py-3');
+                nav.querySelector('div').classList.remove('py-2');
+            }
+        });
+
+        // Trigger initial check
+        setTimeout(() => {
+            handleScrollAnimation();
+        }, 300);
+    </script>
+</body>
+</html>
